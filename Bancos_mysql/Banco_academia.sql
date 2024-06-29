@@ -2,36 +2,36 @@ CREATE TABLE Alunos (
   id_aluno int auto_increment PRIMARY KEY,
   nome varchar (50) NOT NULL,
   idade int (2) NOT NULL,
-  email varchar (50) not null,
-  telefone varchar (11) not null
+  email varchar (50) NOT NULL,
+  telefone varchar (11) NOT NULL
 );
 
 CREATE TABLE Instrutores (
   id_instrutor int auto_increment PRIMARY KEY,
   nome varchar (50) NOT NULL,
   especialidade varchar (20) NOT NULL,
-  email varchar (50) not null,
-  telefone varchar (11) not null
+  email varchar (50) NOT NULL,
+  telefone varchar (11) NOT NULL
 );
 
 CREATE TABLE Planos_de_treinamento (
   id_planos int auto_increment PRIMARY KEY,
   nome varchar (50) NOT NULL,
   descricao varchar (100) NOT NULL,
-  duracao_semanas int not null,
-  valor_mensal varchar (100) not null
+  duracao_semanas int NOT NULL,
+  valor_mensal varchar (100) NOT NULL
 );
 
 CREATE TABLE Equipamentos (
   id_equipamentos int auto_increment PRIMARY KEY,
   nome varchar (50) NOT NULL,
   descricao varchar (50) NOT NULL,
-  quantidade_disponivel int not null
+  quantidade_disponivel int NOT NULL
 );
 
 CREATE TABLE Registro_de_treinos (
   id_treinos int auto_increment PRIMARY KEY,
-  data_treino date not null,
+  data_treino date NOT NULL,
   descricao varchar (200),
   observacoes varchar (200),
   id_aluno int,
@@ -42,8 +42,8 @@ CREATE TABLE Registro_de_treinos (
 
 CREATE TABLE Pagamento_mensalidades (
   id_pagamento int auto_increment PRIMARY KEY,
-  data_pagamento date not null,
-  valor_mensalidade int not null,
+  data_pagamento date NOT NULL,
+  valor_mensalidade int NOT NULL,
   id_aluno int,
   foreign key (id_aluno) references Alunos (id_aluno)
 );
