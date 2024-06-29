@@ -5,16 +5,16 @@
 CREATE TABLE aluno(
     matricula INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    data_nascimento DATE,
-    endereco VARCHAR(100)
+    data_nascimento DATE NOT NULL,
+    endereco VARCHAR(100) NOT NULL
 );
 
 -- TABELA RESPONSAVEL
 CREATE TABLE responsavel(
     id_responsavel INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    telefone VARCHAR(11),
-    endereco VARCHAR(100),
+    telefone VARCHAR(11) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
     matricula INT, 
     FOREIGN KEY (matricula) REFERENCES aluno(matricula)
 );
@@ -22,18 +22,18 @@ CREATE TABLE responsavel(
 -- TABELA PROFESSOR
 CREATE TABLE professor(
     matricula_professor INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    disciplina_lecionada VARCHAR(50),
-    telefone VARCHAR(11),
-    email VARCHAR(50)
+    nome VARCHAR(100) NOT NULL,
+    disciplina_lecionada VARCHAR(50) NOT NULL,
+    telefone VARCHAR(11) NOT NULL,
+    email VARCHAR(50) NOT NULL
 );
 
 
 -- TABELA DISCIPLINA
 CREATE TABLE disciplina(
     cod_disciplina INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    carga_horaria INT,
+    nome VARCHAR(100) NOT NULL,
+    carga_horaria INT NOT NULL,
     matricula_professor INT,
     FOREIGN KEY(matricula_professor) REFERENCES professor(matricula_professor)
 );
@@ -50,8 +50,8 @@ CREATE TABLE matricula(
 
 -- TABELA NOTA
 CREATE TABLE nota(
-    valor_nota DECIMAL (5,2),
-    data_avaliacao DATE,
+    valor_nota DECIMAL (5,2) NOT NULL,
+    data_avaliacao DATE NOT NULL,
     matricula INT,
     cod_disciplina INT,
     FOREIGN KEY (matricula) REFERENCES aluno(matricula),
@@ -60,8 +60,8 @@ CREATE TABLE nota(
 
 -- TABELA FREQUENCIA
 CREATE TABLE frequencia(
-    registro_presenca VARCHAR(10),
-    data_frequencia DATE,
+    registro_presenca VARCHAR(10) NOT NULL,
+    data_frequencia DATE NOT NULL,
     matricula INT,
     cod_disciplina INT,
     FOREIGN KEY (matricula) REFERENCES aluno(matricula),
@@ -71,14 +71,14 @@ CREATE TABLE frequencia(
 -- TABELA ATIVIDADE
 CREATE TABLE atividade(
     atividade_extra INT PRIMARY KEY AUTO_INCREMENT,
-    nome_discipina_extra VARCHAR(50),
-    descricao VARCHAR(200),
-    data_atividade DATE  
+    nome_discipina_extra VARCHAR(50) NOT NULL,
+    descricao VARCHAR(200) NOT NULL,
+    data_atividade DATE NOT NULL 
 );
 
 -- TABELA participação
 CREATE TABLE participacao(
-    participacao_aluno VARCHAR(20),
+    participacao_aluno VARCHAR(20) NOT NULL,
     matricula INT,
     FOREIGN KEY (matricula) REFERENCES aluno(matricula)
 );
